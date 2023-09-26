@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Moedas e Criptomoeda</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <h1>Conversor de Moedas e Criptomoeda</h1>
+        <div class="currency-container">
+            <div class="currency-card from" :class="{ 'active': isFromCurrency }">
+                <h2>De:</h2>
+                <input v-model="fromAmount" type="number" placeholder="Valor" />
+                <select v-model="fromCurrency">
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="GBP">GBP</option>
+                    <!-- Adicione mais moedas fiduciárias aqui -->
+                </select>
+            </div>
+            <div class="currency-card to" :class="{ 'active': !isFromCurrency }">
+                <h2>Para:</h2>
+                <input disabled :value="toAmount" type="number" />
+                <select v-model="toCurrency">
+                    <option value="BTC">BTC</option>
+                    <option value="ETH">ETH</option>
+                    <!-- Adicione mais criptomoedas aqui -->
+                </select>
+            </div>
+        </div>
+        <button @click="convert">Converter</button>
+        <div class="result">
+            <p>Resultado: {{ result }}</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
